@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Notes Organizer</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="./css/styles.css"
+    />
+    <script
+      src="./js/main.js"
+      defer
+      type="module"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Sidebar for Filters -->
+      <aside class="sidebar">
+        <h2>Filter Notes</h2>
+        <!-- <div class="filter-group">
+          <h3>Category</h3>
+          <label
+            ><input
+              type="checkbox"
+              data-filter="html"
+            />
+            HTML</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              data-filter="css"
+            />
+            CSS</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              data-filter="js"
+            />
+            JavaScript</label
+          >
+        </div>
+        <div class="filter-group">
+          <h3>Difficulty</h3>
+          <label
+            ><input
+              type="checkbox"
+              data-filter="beginner"
+            />
+            Beginner</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              data-filter="intermediate"
+            />
+            Intermediate</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              data-filter="advanced"
+            />
+            Advanced</label
+          >
+        </div> -->
+      </aside>
+
+      <!-- Main Content for Notes -->
+      <main class="main-content">
+        <article
+          class="note"
+          data-technology="html"
+          data-discipline="frontend"
+        >
+          <h2>Developing Images</h2>
+
+          <!-- Approach 1: Using &lt;picture&gt; by Default -->
+          <h3>1. Using &lt;picture&gt; by Default</h3>
+          <p>Use &lt;picture&gt; for:</p>
+          <ul>
+            <li>all images under 100 KB</li>
+            <li>
+              images 100 - 200 KB, except for hero section, banners and other
+              visual high-priority places
+            </li>
+          </ul>
+          <pre class="line-numbers"><code class="language-html">
+&lt;picture&gt;
+    &lt;source srcset="image.avif" type="image/avif"&gt;
+    &lt;source srcset="image.webp" type="image/webp"&gt;
+    &lt;img src="image.jpg" alt="Responsive and optimized image" loading="lazy"&gt;
+&lt;/picture&gt;
+        </code></pre>
+
+          <!-- Approach 2: Adding Placeholder for Heavy Images -->
+          <h3>2. Placeholder for Heavy Images</h3>
+          <p>Use a placeholder for:</p>
+          <ul>
+            <li>images over 200 KB</li>
+            <li>
+              100 - 200 KB high-priority images, like hero or banner visuals.
+            </li>
+          </ul>
+          <pre class="line-numbers"><code class="language-html">
+&lt;div class="image-wrapper" style="position: relative;"&gt;
+    &lt;!-- Placeholder image shown first --&gt;
+    &lt;img src="placeholder.jpg" alt="" aria-hidden="true" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: auto;"&gt;
+    
+    &lt;!-- Main image with lazy loading --&gt;
+    &lt;img srcset="image-600.jpg 600w, image-1200.jpg 1200w" 
+          sizes="(max-width: 600px) 100vw, 600px" 
+          src="image-1200.jpg"
+          alt="High-priority image with placeholder"
+          loading="lazy"&gt;
+&lt;/div&gt;
+        </code></pre>
+
+          <!-- Approach 3: Using JavaScript Fallback for Broken Images -->
+          <h3>3. JavaScript Fallback for Broken Images</h3>
+          <p>Use JavaScript fallback for:</p>
+          <ul>
+            <li>Ensuring all images have a backup if they fail to load.</li>
+            <li>
+              Applying fallback universally on pages with many dynamic images.
+            </li>
+          </ul>
+          <pre class="line-numbers"><code class="language-javascript">
+&lt;script&gt;
+document.addEventListener("error", function(e) {
+    if (e.target.tagName === "IMG") {
+        e.target.src = "fallback.jpg";  // Default fallback image
+    }
+}, true);
+&lt;/script&gt;
+        </code></pre>
+        </article>
+
+        <!-- Clone GitHub repo, set your branch, and make first commit -->
+        <article
+          class="note"
+          data-technology="github"
+          data-discipline="backend"
+        >
+          <h2>Clone GitHub repo, set your branch, and make first commit</h2>
+          <!-- Terminal commands to clone a repo, create a branch, and make an initial commit -->
+          <pre class="line-numbers"><code class="language-bash">
+# 1. Clone the GitHub repository (replace 'URL' with the repo's URL)
+git clone https://github.com/username/repository-name.git
+
+# 2. Navigate into the cloned repository
+cd repository-name
+
+# 3. Create and switch to a new branch (replace 'branch-name' with your desired branch name)
+git checkout -b branch-name
+
+# 4. Make changes to your files (edit files as needed)
+
+# 5. Add the modified files to the staging area
+git add .
+
+# 6. Commit the changes with a descriptive message
+git commit -m "First commit on branch-name"
+
+# 7. Push the branch to GitHub
+git push -u origin branch-name
+
+# 8. That's all, further pushes you can do with simply
+git push
+              </code></pre>
+        </article>
+
+        <!-- Create a GitHub repo from existing project on local machine -->
+        <article
+          class="note"
+          data-technology="github"
+          data-discipline="backend"
+        >
+          <h2>Create a GitHub repo from existing project on local machine</h2>
+          <pre class="line-numbers"><code class="language-bash">
+# 1. Navigate to your project directory
+cd /path/to/your/project
+
+# 2. Initialize a new git repository
+git init
+
+# 3. Add all project files to the repository
+git add .
+
+# 4. Commit the changes with a descriptive message
+git commit -m "Initial commit"
+
+# 5. Create a new repository on GitHub using GitHub CLI (replace 'repository-name' with your desired repo name)
+gh repo create repository-name --public --source=. --remote=origin
+
+# 6. Push the local commits to the GitHub repository
+git push -u origin main
+              </code></pre>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>
