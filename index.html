@@ -86,6 +86,68 @@
 
       <!-- Main Content for Notes -->
       <main class="main-content">
+        <!-- Roll Back Remote Main Branch to a Specific Commit -->
+        <article
+          class="note"
+          data-technology="github"
+          data-discipline="backend"
+        >
+          <h2>Roll Back Remote Main Branch to a Specific Commit</h2>
+          <p>
+            Use the following steps to roll back the `main` branch on the remote
+            repository to a specific commit. Be cautious, as this will overwrite
+            the remote commit history, potentially affecting collaborators.
+          </p>
+
+          <ol>
+            <li>
+              View the commit history to identify the target commit hash:
+              <pre><code class="language-bash">git log --format="%H %s" --all</code></pre>
+            </li>
+            <li>
+              Reset your local main branch to the desired commit (replace
+              <code>&lt;commit-hash&gt;</code> with the actual hash):
+              <pre><code class="language-bash">git reset --hard &lt;commit-hash&gt;</code></pre>
+            </li>
+            <li>
+              Force-push the rolled-back main branch to the remote repository:
+              <pre><code class="language-bash">git push origin main -f</code></pre>
+            </li>
+          </ol>
+
+          <p>
+            <strong>Note:</strong> The <code>-f</code> (force) option on
+            <code>git push</code> overwrites the remote branch history. Ensure
+            that this change is communicated to any collaborators who may have
+            pulled newer commits, as they will need to reset their local
+            branches to match the updated remote main.
+          </p>
+        </article>
+
+        <!-- Merge Another Developer's Branch to the Main -->
+        <article
+          class="note"
+          data-technology="github"
+          data-discipline="backend"
+        >
+          <h2>Merge Another Developer's Branch to the Main</h2>
+          <pre class="line-numbers"><code class="language-bash">
+# 1. Ensure you're on the main branch
+git checkout main
+
+# 2. Fetch all branches from the remote repository
+git fetch origin
+
+# 3. Merge the other developer's branch directly from the remote
+# Replace "other-branch" with the actual branch name you want to merge
+git merge origin/other-branch
+
+# 4. Push the changes to the remote main branch if needed
+git push origin main
+              </code></pre>
+        </article>
+
+        <!-- Developing images -->
         <article
           class="note"
           data-technology="html"
