@@ -86,6 +86,45 @@
 
       <!-- Main Content for Notes -->
       <main class="main-content">
+        <!-- Get another developer's branch from GitHub -->
+        <article
+          class="note"
+          data-technology="github"
+          data-discipline="backend"
+        >
+          <h2>Get another developer's branch from GitHub</h2>
+          <p>
+            Follow these steps to work with another developer's branch from a
+            GitHub repository. The commands differ based on whether you already
+            have the branch locally or need to fetch it from the remote
+            repository.
+          </p>
+
+          <h3>If the branch is already on your local machine:</h3>
+          <ol>
+            <li>
+              Switch to the branch:
+              <pre><code class="language-bash">git checkout &lt;branch-name&gt;</code></pre>
+            </li>
+            <li>
+              Pull the latest changes from the remote repository:
+              <pre><code class="language-bash">git pull origin &lt;branch-name&gt;</code></pre>
+            </li>
+          </ol>
+
+          <h3>If the branch is not on your local machine:</h3>
+          <ol>
+            <li>
+              Fetch the branch from the remote repository:
+              <pre><code class="language-bash">git fetch origin &lt;branch-name&gt;</code></pre>
+            </li>
+            <li>
+              Create and switch to the branch locally:
+              <pre><code class="language-bash">git checkout -b &lt;branch-name&gt; origin/&lt;branch-name&gt;</code></pre>
+            </li>
+          </ol>
+        </article>
+
         <!-- Roll back remote main branch to a specific commit -->
         <article
           class="note"
