@@ -86,6 +86,53 @@
 
       <!-- Main Content for Notes -->
       <main class="main-content">
+        <!-- Context API -->
+        <article
+          class="note"
+          data-technology="react"
+          data-discipline="frontend"
+        >
+          <h2>Context API</h2>
+          <p>
+            Use the Context API in React to manage state globally without
+            passing props down manually at every level. Follow these three
+            steps:
+          </p>
+
+          <h3>1. Create context</h3>
+          <p>Define a new context:</p>
+          <pre><code class="language-javascript">const MyContext = React.createContext();</code></pre>
+
+          <h3>2. Create provider</h3>
+          <p>
+            Wrap your app (or a part of it) with the context provider and pass
+            values:
+          </p>
+          <pre><code class="language-javascript">
+      function MyProvider({ children }) {
+          const value = { key: "value" }; // Your shared state or functions
+          return (
+              <MyContext.Provider value={value}>
+                  {children}
+              </MyContext.Provider>
+          );
+      }
+          </code></pre>
+
+          <h3>3. Use context</h3>
+          <p>
+            Access the context in a component using <code>useContext</code>:
+          </p>
+          <pre><code class="language-javascript">
+      import { useContext } from "react";
+      
+      function MyComponent() {
+          const context = useContext(MyContext);
+          return <div>{context.key}</div>;
+      }
+          </code></pre>
+        </article>
+
         <!-- Get another developer's branch from GitHub -->
         <article
           class="note"
