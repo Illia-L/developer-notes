@@ -101,7 +101,7 @@
 
           <h3>1. Create context</h3>
           <p>Define a new context:</p>
-          <pre><code class="language-javascript">const MyContext = React.createContext();</code></pre>
+          <pre><code class="language-javascript">const MyContext = createContext();</code></pre>
 
           <h3>2. Create provider</h3>
           <p>
@@ -124,11 +124,9 @@ function MyProvider(&#123; children &#125;) &#123;
             Access the context in a component using <code>useContext</code>:
           </p>
           <pre><code class="language-javascript">
-import &#123; useContext &#125; from "react";
-
 function MyComponent() &#123;
-  const context = useContext(MyContext);
-  return &lt;div&gt;&#123;context.key&#125;&lt;/div&gt;;
+  const { key } = useContext(MyContext);
+  return ...
 &#125;
   </code></pre>
         </article>
