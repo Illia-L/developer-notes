@@ -109,28 +109,28 @@
             values:
           </p>
           <pre><code class="language-jsx">
-      function MyProvider({ children }) {
-          const value = { key: "value" }; // Your shared state or functions
-          return (
-              <MyContext.Provider value={value}>
-                  {children}
-              </MyContext.Provider>
-          );
-      }
-          </code></pre>
+function MyProvider(&#123; children &#125;) &#123;
+  const value = &#123; key: "value" &#125;; // Your shared state or functions
+  return (
+      &lt;MyContext.Provider value=&#123;value&#125;&gt;
+          &#123;children&#125;
+      &lt;/MyContext.Provider&gt;
+  );
+&#125;
+  </code></pre>
 
           <h3>3. Use context</h3>
           <p>
             Access the context in a component using <code>useContext</code>:
           </p>
-          <pre><code class="language-javascript">
-      import { useContext } from "react";
-      
-      function MyComponent() {
-          const context = useContext(MyContext);
-          return <div>{context.key}</div>;
-      }
-          </code></pre>
+          <pre><code class="language-jsx">
+import &#123; useContext &#125; from "react";
+
+function MyComponent() &#123;
+  const context = useContext(MyContext);
+  return &lt;div&gt;&#123;context.key&#125;&lt;/div&gt;;
+&#125;
+  </code></pre>
         </article>
 
         <!-- Get another developer's branch from GitHub -->
