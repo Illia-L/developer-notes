@@ -86,6 +86,122 @@
 
       <!-- Main Content for Notes -->
       <main class="main-content">
+        <!-- React Router -->
+        <article
+          class="note"
+          data-technology="react"
+          data-discipline="frontend"
+        >
+          <h2>React Router</h2>
+          <p>
+            Use React Router to handle navigation in a React application. Follow
+            these steps to install and use it effectively.
+          </p>
+
+          <h3>1. Install React Router</h3>
+          <p>To use React Router, install the package:</p>
+          <pre><code class="language-bash">npm install react-router-dom</code></pre>
+
+          <h3>2. Basic usage example</h3>
+          <p>
+            Wrap your app in a <code>BrowserRouter</code> to enable routing:
+          </p>
+          <pre><code class="language-jsx">
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+function App() {
+  return (
+      &lt;Router&gt;
+          &lt;Routes&gt;
+              &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+              &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+          &lt;/Routes&gt;
+      &lt;/Router&gt;
+  );
+}
+  </code></pre>
+
+          <h3>3. Creating links to routes</h3>
+          <p>
+            Use <code>Link</code> instead of <code>&lt;a&gt;</code> to navigate
+            between pages:
+          </p>
+          <pre><code class="language-jsx">
+import { Link } from "react-router-dom";
+
+function Navbar() {
+  return (
+      &lt;nav&gt;
+          &lt;Link to="/"&gt;Home&lt;/Link&gt;
+          &lt;Link to="/profile"&gt;Profile&lt;/Link&gt;
+      &lt;/nav&gt;
+  );
+}
+  </code></pre>
+
+          <h3>4. Redirecting to a route</h3>
+          <p>Use <code>useNavigate</code> to programmatically navigate:</p>
+          <pre><code class="language-jsx">
+import { useNavigate } from "react-router-dom";
+
+function Login() {
+  const navigate = useNavigate();
+  
+  function handleLogin() {
+      // Perform login logic
+      navigate("/dashboard"); // Redirect after login
+  }
+
+  return &lt;button onClick={handleLogin}&gt;Log In&lt;/button&gt;;
+}
+  </code></pre>
+
+          <h3>5. Getting the page from the address bar</h3>
+          <p>Use <code>useLocation</code> to access the current path:</p>
+          <pre><code class="language-jsx">
+import { useLocation } from "react-router-dom";
+
+function CurrentPage() {
+  const location = useLocation();
+  
+  return &lt;p&gt;Current path: {location.pathname}&lt;/p&gt;;
+}
+
+// Example URL: https://example.com/profile
+// Rendered output: Current path: /profile
+  </code></pre>
+
+          <h3>6. Working with query parameters</h3>
+          <p>
+            Use <code>useSearchParams</code> to <strong>get</strong> and
+            <strong>set</strong> query parameters:
+          </p>
+          <pre><code class="language-jsx">
+import { useSearchParams } from "react-router-dom";
+
+function FilterPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function updateFilter() {
+      setSearchParams({ category: "books" }); // Updates URL to ?category=books
+  }
+
+  return (
+      &lt;div&gt;
+          &lt;p&gt;Current category: {searchParams.get("category")}&lt;/p&gt;
+          &lt;button onClick={updateFilter}&gt;Set Filter&lt;/button&gt;
+      &lt;/div&gt;
+  );
+}
+
+// Example URL: https://example.com/shop?category=electronics
+// Rendered output: Current category: electronics
+
+// After clicking "Set Filter", URL changes to: https://example.com/shop?category=books
+// New rendered output: Current category: books
+  </code></pre>
+        </article>
+
         <!-- Context API -->
         <article
           class="note"
