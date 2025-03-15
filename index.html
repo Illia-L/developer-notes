@@ -86,6 +86,52 @@
 
       <!-- Main Content for Notes -->
       <main class="main-content">
+        <!-- useReducer in React -->
+        <article
+          class="note"
+          data-technology="react"
+          data-discipline="frontend"
+        >
+          <h2>useReducer in React</h2>
+          <p>
+            Follow these steps to use <code>useReducer</code> for state
+            management.
+          </p>
+
+          <h3>1. Import <code>useReducer</code> and define reducer</h3>
+          <p>Create a reducer function to handle state updates:</p>
+          <pre><code class="language-jsx">
+import { useReducer } from "react";
+
+function reducer(state, action) {
+  switch (action.type) {
+      case "increment":
+          return { count: state.count + 1 };
+      case "decrement":
+          return { count: state.count - 1 };
+      default:
+          return state;
+  }
+}
+  </code></pre>
+
+          <h3>2. Initialize <code>useReducer</code> in a component</h3>
+          <p>Use <code>useReducer</code> inside a functional component:</p>
+          <pre><code class="language-javascript">
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+      &lt;div&gt;
+          &lt;p&gt;Count: {state.count}&lt;/p&gt;
+          &lt;button onClick={() => dispatch({ type: "increment" })}&gt;+&lt;/button&gt;
+          &lt;button onClick={() => dispatch({ type: "decrement" })}&gt;-&lt;/button&gt;
+      &lt;/div&gt;
+  );
+}
+  </code></pre>
+        </article>
+
         <!-- React Router -->
         <article
           class="note"
