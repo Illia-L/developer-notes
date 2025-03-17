@@ -86,6 +86,86 @@
 
       <!-- Main Content for Notes -->
       <main class="main-content">
+        <!-- Basic initiating and using React Redux -->
+        <article
+          class="note"
+          data-technology="react"
+          data-discipline="frontend"
+        >
+          <h2>Basic initiating and using React Redux</h2>
+          <p>
+            Follow these steps to set up and use Redux in a React application.
+          </p>
+
+          <h3>1. Install Redux and React-Redux</h3>
+          <p>First, install the required packages:</p>
+          <pre><code class="language-bash">npm install @reduxjs/toolkit react-redux</code></pre>
+
+          <h3>2. Create a Redux store</h3>
+          <p>
+            Define a Redux store using <code>configureStore</code> from Redux
+            Toolkit:
+          </p>
+          <pre><code class="language-javascript">
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { value: 0 },
+  reducers: {
+      increment: (state) => { state.value += 1; },
+      decrement: (state) => { state.value -= 1; }
+  }
+});
+
+export const { increment, decrement } = counterSlice.actions;
+export const store = configureStore({ reducer: { counter: counterSlice.reducer } });
+  </code></pre>
+
+          <h3>3. Provide the store to React</h3>
+          <p>Wrap your app with the <code>Provider</code> component:</p>
+          <pre><code class="language-javascript">
+import { Provider } from "react-redux";
+import { store } from "./store";
+import App from "./App";
+
+function Root() {
+  return (
+      &lt;Provider store={store}&gt;
+          &lt;App /&gt;
+      &lt;/Provider&gt;
+  );
+}
+
+export default Root;
+  </code></pre>
+
+          <h3>4. Use Redux state in a component</h3>
+          <p>
+            Access state and dispatch actions using <code>useSelector</code> and
+            <code>useDispatch</code>:
+          </p>
+          <pre><code class="language-javascript">
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "./store";
+
+function Counter() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  return (
+      &lt;div&gt;
+          &lt;p&gt;Count: {count}&lt;/p&gt;
+          &lt;button onClick={() => dispatch(increment())}&gt;+&lt;/button&gt;
+          &lt;button onClick={() => dispatch(decrement())}&gt;-&lt;/button&gt;
+      &lt;/div&gt;
+  );
+}
+
+export default Counter;
+  </code></pre>
+        </article>
+
         <!-- useReducer in React -->
         <article
           class="note"
